@@ -1,0 +1,178 @@
+ @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700");
+ html, body {
+     overflow-x: hidden;
+     font-family: "Montserrat", sans-serif;
+     font-weight: 300;
+     color: #000;
+     background:gray;
+     -webkit-background-size: cover;
+     -moz-background-size: cover;
+     -o-background-size: cover;
+     background-size: cover;
+     height: 100%;
+     width: 100%;
+}
+ .navbar{
+     border-radius: 0px;
+     margin: 0px;
+}
+ .navbar-default{
+     background-color:#fff;
+     border:none;
+}
+ .navbar-inverse .navbar-toggle .icon-bar{
+     background-color: #000;
+}
+ .navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover{
+     background-color: #f1f1f1;
+     color: #eb4604;
+}
+ .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover{
+     background-color: gray;
+     font-weight: bold;
+}
+ .navbar-inverse .navbar-nav > li > a:focus, .navbar-inverse .navbar-nav > li > a:hover{
+     color: #eb4604;
+}
+
+ .navbar-brand img{
+     max-width: 120px;
+     margin-top: -7px;
+}
+
+.content{
+     margin-top: 70px;
+     color: #455a64;
+}
+
+ .profile_picture{
+     height:50px;
+     width:50x;
+}
+ .card-title h3{
+     margin-left: 10px;
+     margin-bottom: -10px;
+}
+ .card-title a{
+     float: right;
+     margin-top: -15px;
+     margin-right: 10px;
+}
+ .first_tab a:hover{
+     color: #129ab9;
+}
+ .form-group{
+     margin-top: 10px;
+}
+ #control-label{
+     text-align: left;
+     font-weight: normal;
+}
+ .first_tab, .second_tab, .third_tab, .forth_tab, .newphone{
+     background-color: #fff;
+     padding:5px;
+     height: auto;
+}
+ .second_tab{
+     padding-left: 50px;
+height: 301px;
+}
+ .third_tab{
+     padding-top: 40px;
+     height: 301px;
+}
+#my_profile_file{
+    display: none;
+}
+#profile_upload_link:hover{
+    color: #ea4503;
+}
+ .btnaddnewphone{
+     width: 200px;
+     font-family: "Montserrat", sans-serif;
+     font-size: 1.2em;
+     height: 40px;
+     letter-spacing: 0.6px;
+     color: #fff;
+     font-weight: 200;
+     background-color: #129ab9;
+     transition: all 0.3s ease-in;
+}
+
+ .btnaddnewphone:hover{
+     background-color: #ea4503;
+     color: #fff;
+     transition: all 0.3s ease-in;
+}
+
+.btnaddnewphone.focus, .btnaddnewphone:focus, .btnaddnewphone:hover{
+    color: #fff !important;
+    transition: all 0.3s ease-in;
+}
+ .form-control{
+     border-radius: 3px;
+     letter-spacing: 0.5px;
+}
+ #number_forwarding, #emailaddress{
+     display: none;
+}
+ .text_header_color {
+     color: #eb4604;
+}
+ .card-title{
+     margin-bottom: 20px;
+}
+.validationError{
+    margin-bottom: -23px;
+    margin-top: 84px;
+}
+.validationError p{ 
+    text-align: center;
+    display: none;
+}
+ @media screen and (max-width: 768px){
+     .content{
+         margin:55px 10px 10px 10px;
+    }
+     .card-title h3{
+         font-size: 1.0em;
+    }
+     .card-title a{
+         font-size: 0.8em;
+         margin-top: -10px;
+    }
+    .first_tab{
+        margin-bottom:  -85px;
+    }
+     .second_tab, .third_tab{
+         padding-left:20px;
+         padding-right:20px;
+         height: auto;
+    }
+     .third_tab{
+         height: auto;
+         margin-top: -20px;
+         padding-top: 0px;
+    }
+    .toggle_call_recording, .toggle_call_forwarding, .toggle_voice_mail, .toggle_voicemail_to_email{
+         display: inline;
+         float: right;
+    }
+    
+     .btnaddnewphone{
+         width: 200px;
+         font-size: 1.0em;
+         height: 30px;
+    }
+    
+    .validationError p{
+        margin-top: -85px;
+    }
+    
+}
+
+@media screen and (max-width: 360px){
+    .toggle_voicemail_to_email{
+        margin-top: -25px;
+    }
+}

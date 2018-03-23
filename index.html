@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PBX Login</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/font-awesome-5.0.8/css/fontawesome-all.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/pre_login.css" />
+    
+</head> 
+
+<body>
+    <div class="container" ng-app="myLoginApp" ng-controller="myLoginCtrl">
+        <center>
+            <div class="row" style="display: none;">
+                <div class="content">
+                    <header>
+                        <div class="col-lg-12">
+                            <div class="logodiv">
+                                <img src="assets/images/logo.png" class="logo" alt="A1ROUTES" />
+                                <span class="header-name">PBX Manager</span>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="col-lg-12">
+                        <form method="POST" id="myLoginForm" name="myLoginForm" ng-submit="doLogin()" novalidate>
+                            
+                            <div class="form-group" id="usernameError" ng-class="{ 'has-error' : myLoginForm.username.$invalid && !myLoginForm.username.$pristine || $parent.submitted}">
+                                <span>
+                                    <input class="form-control slide-up" ng-model="data.username" ng-blur="validateInput(form.warehouse_name)" name="username"  id="username" title="" type="text" placeholder="Username"   tabindex="1" required  />                             
+                                    <label ng-style="lblError"  for="username"><i class="fa fa-user"></i> </label>                                
+                                </span>
+                                <!-- <p ng-show="myLoginForm.username.$invalid && !myLoginForm.username.$pristine" class="alert alert-danger fade in">Username is required.</p> -->
+                            </div>                                                     
+                            
+                            <div class="form-group" id="passwdError" ng-class="{ 'has-error' : myLoginForm.passwd.$invalid && !myLoginForm.passwd.$pristine || $parent.submitted}">
+                                <span >
+                                    <input class="form-control slide-up" class="passwd"  ng-model="data.passwd" name="passwd" id="passwd" title="" type="password" placeholder="Password"  tabindex="2" required />                                
+                                    <label ng-style="lblError" for="passwd"><i class="fa fa-key"></i> </label>
+                                </span>
+                                <span id="show-hide" class="glyphicon glyphicon-eye-open toggle-password"></span>
+                                <!-- <p ng-show="myLoginForm.passwd.$invalid && !myLoginForm.passwd.$pristine" class="alert alert-danger fade in">Password is required.</p> -->
+                            </div>
+                            
+                            <!-- <div class="col-sm-12 remember" >
+                                <input type="checkbox" id="rememberme" class="remembermechk" tabindex="3" />
+                                <label class="remembermelbl" for="rememberme">Remember me</label>
+                            </div> -->
+                            <div class="form-group">
+                                <span>
+                                    <button class="btn btnlogin"  name="btnlogin" type="submit" tabindex="4"> Log in <i class="fa fa-sign-in-alt" ></i>&nbsp;&nbsp;</button>
+                                </span>
+                            </div>
+                           <!--  <div class="col-sm-12">
+                                <p class="forgot"><a href="#" tabindex="5">Forgot password?</a></p>
+                            </div><br> --> 
+                                <p id="loginError" class="alert alert-danger fade in" style="display: none;text-align: center;margin-top: 10px;">Invalid Username or Password.</p>                       
+                        </form>
+                    </div>
+                </div>              
+            </div>
+        </center>
+    </div>
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>   
+    <script type="text/javascript" src="assets/js/angular/angular.min.js"></script>    
+    <script type="text/javascript" src="assets/js/pre_login.js"></script>
+     
+</body>
+
+</html>

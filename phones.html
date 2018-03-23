@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <head>
+         <title>PBX Phones</title>
+         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
+         <link rel="stylesheet" type="text/css" href="assets/font-awesome-5.0.8/css/fontawesome-all.css" />
+         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-toggle.min.css"  />
+         <link rel="stylesheet" type="text/css" href="assets/css/angular/angular-bootstrap-toggle.min.css" />
+         <link rel="stylesheet" type="text/css" href="assets/css/base.css" />
+
+   </head>
+   <body ng-app="myAddNewPhoneApp" ng-controller="myAddNewPhoneCtrl">
+      <nav class="navbar navbar-inverse navbar-default navbar-fixed-top">
+         <div class="container">
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>                        
+               </button>
+               <a class="navbar-brand" href="#">
+               	<img src="assets/images/logo.png" alt="A1ROUTES" />
+               </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+               <ul class="nav navbar-nav">
+                  <li><a href="javascript:void(0);">Dashboard</a></li>
+                  <!-- <li class="dropdown">
+                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+                     <ul class="dropdown-menu">
+                       <li><a href="#">Page 1-1</a></li>
+                       <li><a href="#">Page 1-2</a></li>
+                       <li><a href="#">Page 1-3</a></li>
+                     </ul>
+                     </li>
+                     -->
+                  <li class="active"><a href="javascript:void(0);">Phones</a></li>
+                  <li><a href="javascript:void(0);">IVR</a></li>
+                  <li><a href="javascript:void(0);">Queue</a></li>
+                  <li><a href="javascript:void(0);">Reports</a></li>
+                  <li><a href="javascript:void(0);">Settings</a></li>
+               </ul>
+               <ul class="nav navbar-nav navbar-right">
+                  <!--<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->                  
+                  <li><a href="javascript:void(0);"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                  </ul>                  
+            </div>
+         </div>
+      </nav>
+      <div class="container content" >  
+         <form class="form-horizontal" id="myNewPhoneForm" name="myNewPhoneForm" method="POST"  ng-submit="addNewPhone()" novalidate>                            
+            <div class="row main-form">
+               <div class="col-sm-12 first_tab">
+                   <div class="card-title">
+                     <h3 class="text_header_color">Add new Phones</h3>                      
+                     <a href="javascript:void(0);" class="newphone" >+ new phone</a>
+                  </div><hr>                 
+               </div>      
+              <div class="validationError">
+                  <p id="Error" class="alert alert-danger fade in" style="">Please fill all requried field's (*).</p>
+              </div> 
+               <div class="col-sm-6 second_tab" >
+                  <div class="form-group">
+                     <label id="control-label" class="control-label col-sm-5" for="profile_picture" >Profile Picture</label>
+                     <center>
+                        <div class="col-sm-6">
+                           <img src="assets/images/profile-pic.png" class="profile_picture" id="profile_picture" /><br> 
+                           <input type="file"  id="my_profile_file" name="my_profile" id="my_profile" />
+                           <a href="javascript:void(0);" id="profile_upload_link">Choose image</a>
+                        </div>
+                     </center>
+                  </div>
+                  <div class="form-group" ng-class="{ 'has-error' : myNewPhoneForm.username.$invalid && !myNewPhoneForm.username.$pristine }">
+                     <label id="control-label" class="control-label col-sm-5" for="username"> Username <span style="color: #a94442;">*</span></label>
+                     <div class="col-sm-6">
+                        <input type="text" class="form-control" id="username" placeholder="username of agent" name="username" ng-model="data.username" required />
+                     </div>
+                  </div>
+                  <div class="form-group" ng-class="{ 'has-error' : myNewPhoneForm.passwd.$invalid && !myNewPhoneForm.passwd.$pristine }">
+                     <label id="control-label" class="control-label col-sm-5" for="passwd" >Password <span style="color: #a94442;">*</span></label>
+                     <div class="col-sm-6">
+                     <input type="password" class="form-control" id="passwd" placeholder="minimum 8 charecters" name="passwd" ng-model="data.passwd" required />
+                     </div>
+                  </div>
+                  <div class="form-group" ng-class="{ 'has-error' : myNewPhoneForm.caller_id.$invalid && !myNewPhoneForm.caller_id.$pristine }">
+                     <label id="control-label" class="control-label col-sm-5" for="caller_id" >Caller Id <span style="color: #a94442;">*</span></label>
+                     <div class="col-sm-6">
+                        <input type="text" class="form-control" id="caller_id" ng-model="data.caller_id" placeholder="1234567890" name="caller_id" min="0" required onkeypress="return isNumericValidation(event);" />
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label id="control-label" class="control-label col-sm-5" for="call_recording" >Call Recording</label>
+                     <div class="col-sm-6 toggle_call_recording">
+                        <toggle  ng-model="data.call_recording" on="Enabled" off="Disabled"></toggle>                                                
+                     </div>
+                  </div>
+               </div>
+               <div class="col-sm-6 third_tab">
+                  <div class="form-group">
+                     <label id="control-label" class="control-label col-sm-5" for="call_forwarding" >Call Forwarding</label>
+                     <div class="col-sm-6 toggle_call_forwarding">
+                        <toggle  ng-model="data.call_forwarding" ng-click="showHideNumberForwarding = showHideNumberForwarding?false:true" on="Enabled" off="Disabled"></toggle>                                                                        
+                     </div>
+                  </div>
+                  <div ng-show="showHideNumberForwarding" class="form-group"  ng-class="{ 'has-error' : myNewPhoneForm.forwarding_number.$invalid && !myNewPhoneForm.forwarding_number.$pristine }">                  	
+                     <label id="control-label" class="control-label col-sm-5" for="forwarding_number" >Forwarding Number <span style="color: #a94442;">*</span></label>
+                     <div class="col-sm-6">
+                        <input type="text"  ng-required="data.call_forwarding" ng-model="data.forwarding_number" class="form-control" id="forwarding_number"  placeholder="1234567890" name="forwarding_number" onkeypress="return isNumericValidation(event);"   />                     
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label id="control-label" class="control-label col-sm-5" for="voice_mail" >Voice Mail</label>
+                     <div class="col-sm-6 toggle_voice_mail">
+                        <toggle  ng-model="data.voice_mail"   on="Enabled" off="Disabled"></toggle>                                                                                                
+                     </div>
+                  </div>
+                  <div class="form-group">                  	
+                     <label id="control-label" class="control-label col-sm-5" for="voicemail_to_email" >Voicemail to eMail</label>
+                     <div class="col-sm-6 toggle_voicemail_to_email">
+                        <toggle  ng-model="data.voicemail_to_email" ng-click="showHideEmailAddress = showHideEmailAddress?false:true" on="Enabled" off="Disabled"></toggle>                                                                                                                        
+                     </div>                 
+                  </div>                  
+                  <div  ng-show="showHideEmailAddress" class="form-group" ng-class="{ 'has-error' : myNewPhoneForm.email_id.$invalid && !myNewPhoneForm.email_id.$pristine }">                  	
+                        <label id="control-label" class="control-label col-sm-5" for="email_id" >Email Address <span style="color: #a94442;">*</span></label>
+                        <div class="col-sm-6">                          
+                           <input type="email" ng-required="data.voicemail_to_email" ng-model="data.email_id" class="form-control" id="email_id"  placeholder="info@pbx.com" name="email_id"  />
+                        </div>                 	 
+                  </div>                 
+               </div>
+            </div>         
+
+            <div class="row forth_tab text-align-center">            	
+            	<div class="form-group">
+                  <div class="col-12">
+                  <center>   
+                     <button type="submit" class="btn btnaddnewphone"  >Add Phone</button></center>
+                  </div>
+                </div>               
+            </div>
+         </form>
+                
+
+      </div>
+      <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+      <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="assets/js/bootstrap-toggle.min.js"></script>
+      <script type="text/javascript" src="assets/js/angular/angular.min.js"></script>
+      <script type="text/javascript" src="assets/js/angular/angular-bootstrap-toggle.min.js"></script>    
+      <script type="text/javascript" src="assets/js/base.js"></script>
+     
+     <script type="text/javascript">    
+      var addNewPhoneApp = angular.module('myAddNewPhoneApp', ['ui.toggle']);
+      addNewPhoneApp.controller('myAddNewPhoneCtrl', function($scope) {                 
+//$('#voicemail_to_email').change(function() {
+  if($scope.showHideEmailAddress){
+       //  if (this.checked) {
+             $('#email_id').fadeIn('slow');
+              //$('#emailid').removeAttr('disabled');
+       //  } else {
+           //  $('#email_id').fadeOut('slow');
+              //$('#emailid').attr('disabled','');
+           //  $('#emailid').val('');
+       //  }
+       }
+//    });
+       $scope.addNewPhone = function() {
+           var post_data = $scope.data;    
+
+           //console.log($scope.myLoginForm.$valid);
+            if (!$scope.myNewPhoneForm.$valid) {
+                 $('.alert-danger').show();
+                console.log('error');
+                //$("#divError").addClass("has-error"); 
+
+                return false;
+            }
+            else
+            {               
+               //console.log( 'serialize: ' + $( '#myNewPhoneForm' ).serialize() );
+              $('.alert-danger').hide();
+                console.log('post data: ' , post_data);
+                // $("#divError").removeClass("has-error");
+                // var username = $scope.data.username;
+                // var password = $scope.data.passwd;
+                // if (username == "admin" && password == "admin")
+                // {
+                //      window.location.href = "phones.html";
+                // } else {
+                //     //alert('invalid username and password');
+                //     $('#loginError').show();
+                // }                
+            }
+        }
+    });
+     </script>
+   </body>
+</html>
+
