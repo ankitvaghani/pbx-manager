@@ -51,7 +51,7 @@
          </div>
       </nav>
       <div class="container content" >  
-         <form class="form-horizontal" id="myNewPhoneForm" name="myNewPhoneForm" method="POST"  ng-submit="addNewPhone()" novalidate>                            
+         <form class="form-horizontal" id="myNewPhoneForm" enctype="multipart/form-data" name="myNewPhoneForm" method="POST"  ng-submit="addNewPhone()" novalidate>
             <div class="row main-form">
                <div class="col-sm-12 first_tab">
                    <div class="card-title">
@@ -60,15 +60,18 @@
                   </div><hr>                 
                </div>      
               <div class="validationError">
-                  <p id="Error" class="alert alert-danger fade in" style="">Please fill all requried field's (*).</p>
-              </div> 
+                  <p  class="alert alert-danger fade in">Please fill all requried field's (*).</p>
+              </div>
+
+
                <div class="col-sm-6 second_tab" >
+
                   <div class="form-group">
-                     <label id="control-label" class="control-label col-sm-5" for="profile_picture" >Profile Picture</label>
+                     <label id="control-label" class="control-label col-sm-5 profile_label"" for="profile_picture" >Profile Picture</label>
                      <center>
                         <div class="col-sm-6">
                            <img src="assets/images/profile-pic.png" class="profile_picture" id="profile_picture" /><br> 
-                           <input type="file"  id="my_profile_file" name="my_profile" id="my_profile" />
+                           <input type="file" ng-model="my_profile_file" valid-file upload="uploadFile(file)" onchange="readURL(this);"  id="my_profile_file" name="my_profile_file"  accept="image/gif, image/jpeg, image/jpg, image/png" />
                            <a href="javascript:void(0);" id="profile_upload_link">Choose image</a>
                         </div>
                      </center>
@@ -150,52 +153,7 @@
       <script type="text/javascript" src="assets/js/angular/angular.min.js"></script>
       <script type="text/javascript" src="assets/js/angular/angular-bootstrap-toggle.min.js"></script>    
       <script type="text/javascript" src="assets/js/base.js"></script>
-     
-     <script type="text/javascript">    
-      var addNewPhoneApp = angular.module('myAddNewPhoneApp', ['ui.toggle']);
-      addNewPhoneApp.controller('myAddNewPhoneCtrl', function($scope) {                 
-//$('#voicemail_to_email').change(function() {
-  if($scope.showHideEmailAddress){
-       //  if (this.checked) {
-             $('#email_id').fadeIn('slow');
-              //$('#emailid').removeAttr('disabled');
-       //  } else {
-           //  $('#email_id').fadeOut('slow');
-              //$('#emailid').attr('disabled','');
-           //  $('#emailid').val('');
-       //  }
-       }
-//    });
-       $scope.addNewPhone = function() {
-           var post_data = $scope.data;    
 
-           //console.log($scope.myLoginForm.$valid);
-            if (!$scope.myNewPhoneForm.$valid) {
-                 $('.alert-danger').show();
-                console.log('error');
-                //$("#divError").addClass("has-error"); 
-
-                return false;
-            }
-            else
-            {               
-               //console.log( 'serialize: ' + $( '#myNewPhoneForm' ).serialize() );
-              $('.alert-danger').hide();
-                console.log('post data: ' , post_data);
-                // $("#divError").removeClass("has-error");
-                // var username = $scope.data.username;
-                // var password = $scope.data.passwd;
-                // if (username == "admin" && password == "admin")
-                // {
-                //      window.location.href = "phones.html";
-                // } else {
-                //     //alert('invalid username and password');
-                //     $('#loginError').show();
-                // }                
-            }
-        }
-    });
-     </script>
    </body>
 </html>
 

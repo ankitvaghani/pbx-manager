@@ -44,8 +44,10 @@
      margin-top: 70px;
      color: #455a64;
 }
-
- .profile_picture{
+.profile_label{
+    margin-top: 35px;
+}
+.profile_picture{
      height:50px;
      width:50x;
 }
@@ -75,11 +77,14 @@
 }
  .second_tab{
      padding-left: 50px;
-height: 301px;
+     height: 301px;
 }
  .third_tab{
      padding-top: 40px;
      height: 301px;
+}
+.forth_tab{
+    padding-top: 30px;
 }
 #my_profile_file{
     display: none;
@@ -89,7 +94,7 @@ height: 301px;
 }
  .btnaddnewphone{
      width: 200px;
-     font-family: "Montserrat", sans-serif;
+     font-family: "Montserrat", sans-serif !important;
      font-size: 1.2em;
      height: 40px;
      letter-spacing: 0.6px;
@@ -98,13 +103,11 @@ height: 301px;
      background-color: #129ab9;
      transition: all 0.3s ease-in;
 }
-
  .btnaddnewphone:hover{
      background-color: #ea4503;
      color: #fff;
      transition: all 0.3s ease-in;
 }
-
 .btnaddnewphone.focus, .btnaddnewphone:focus, .btnaddnewphone:hover{
     color: #fff !important;
     transition: all 0.3s ease-in;

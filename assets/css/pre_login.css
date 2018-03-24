@@ -84,6 +84,7 @@
 }
 #passwdError{
     margin-bottom: -15px;
+    margin-top: 0;
 }
  #show-hide{
      float: right;
