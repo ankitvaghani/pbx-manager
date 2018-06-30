@@ -67,11 +67,11 @@
                <div class="col-sm-6 second_tab" >
 
                   <div class="form-group">
-                     <label id="control-label" class="control-label col-sm-5 profile_label"" for="profile_picture" >Profile Picture</label>
+                     <label id="control-label" class="control-label col-sm-5 profile_label" for="profile_picture" >Profile Picture</label>
                      <center>
                         <div class="col-sm-6">
                            <img src="assets/images/profile-pic.png" class="profile_picture" id="profile_picture" /><br> 
-                           <input type="file" ng-model="my_profile_file" valid-file upload="uploadFile(file)" onchange="readURL(this);"  id="my_profile_file" name="my_profile_file"  accept="image/gif, image/jpeg, image/jpg, image/png" />
+                           <input type="file" ng-model="data.my_profile_file"  onchange="readURL(this);"  id="my_profile_file" name="my_profile_file"  accept="image/gif, image/jpeg, image/jpg, image/png" />
                            <a href="javascript:void(0);" id="profile_upload_link">Choose image</a>
                         </div>
                      </center>
